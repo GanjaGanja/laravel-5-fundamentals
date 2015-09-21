@@ -9,14 +9,16 @@ use App\Http\Controllers\Controller;
 class PagesController extends Controller
 {
     public function about() {
-
 		//1st variant
     	$name = 'Ochenj <span style="color: #D44D4D;">Gorkyj</span>';
-    	return view('pages.about')->with('name', $name);
+        $people = [
+        'Person 1', 'Person 2', 'Etc.'
+        ];
+
+    	return view('pages.about')->with('name', $name)->with('people', $people);
     }
 
-    public function about2() {
-        
+    public function about2() {        
         //2nd variant
         return view('pages.about2')->with([
           'first' => 'Vmeru',
@@ -25,7 +27,6 @@ class PagesController extends Controller
     }
 
     public function about3() {
-
         //3rd variant
         $data = [];
         $data['first'] = 'Not';
@@ -34,10 +35,13 @@ class PagesController extends Controller
     }
 
     public function about4() {
-
         //4th variant
         $first = 'Super';
         $last = 'Gorkyj';
         return view('pages.about4', compact('first', 'last'));
+    }
+
+    public function contact() {
+        return view('pages.contact');
     }
 }
