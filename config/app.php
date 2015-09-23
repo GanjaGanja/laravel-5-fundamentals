@@ -137,6 +137,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        //forms for laravel-5-fundamentals tutorial
+        Illuminate\Html\HtmlServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -193,6 +196,10 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        //forms for laravel-5-fundamentals tutorial
+        'Form'      => Illuminate\Html\FormFacade::class,
+        'Html'      => Illuminate\Html\HtmlFacade::class,
 
     ],
 
