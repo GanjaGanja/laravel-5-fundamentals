@@ -63,6 +63,12 @@ class ArticlesController extends Controller
     }
 
 
+    /**
+     * Edit an existing article.
+     * 
+     * @param  integer $id
+     * @return Response
+     */
     public function edit($id)
     {
         $article = Article::findOrFail($id);

@@ -8,27 +8,52 @@ use Carbon\Carbon;
 
 class Article extends Model
 {
+    /**
+     * Fillable fields for an Article
+     * 
+     * @var array
+     */
     protected $fillable = [
 		'title',
 		'body',
-		'published_at'
+		'published_at',
+        'user_id' // temporary!
     ];
 
+    /**
+     * Additional fields to threat as Carbon instances
+     * 
+     * @var array
+     */
     protected $dates = ['published_at'];
 
+    /**
+     * Scope queries to articles that have been published.
+     * 
+     * @param  $query
+     */
     public function scopePublished($query)
     {
     	$query->where('published_at', '<=', Carbon::now());
     }
 
-    public function scopeUnpublished($query)
-    {
-    	$query->where('published_at', '>', Carbon::now());
-    }
-
-    // mutator format setNameAttribute
+    /**
+     * Set the published_at attribute.
+     * 
+     * @param $date
+     */
     public function setPublishedAtAttribute($date)
     {
     	$this->attributes['published_at'] = Carbon::parse($date);
+    }
+
+    /**
+     * An article is owned by a user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Realations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
