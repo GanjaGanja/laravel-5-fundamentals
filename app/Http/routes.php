@@ -20,3 +20,8 @@ Route::get('contact', 'PagesController@contact');
  * Option 2 for making routes
  */
 Route::resource('articles', 'ArticlesController');
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
