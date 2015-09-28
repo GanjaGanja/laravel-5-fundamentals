@@ -13,7 +13,7 @@ class ArticlesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -82,7 +82,13 @@ class ArticlesController extends Controller
         return view('articles.edit', compact('article'));
     }
 
-
+    /**
+     * Update an article
+     * 
+     * @param  integer         $id      
+     * @param  ArticleRequest  $request 
+     * @return Response                  
+     */
     public function update($id, ArticleRequest $request)
     {
         $article = Article::findOrFail($id);
