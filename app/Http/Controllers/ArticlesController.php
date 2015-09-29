@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Tag;
 use App\Http\Requests;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
@@ -48,7 +49,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-    	return view('articles.create');
+        $tags = Tag::lists('name', 'id');
+
+    	return view('articles.create', compact('tags'));
     }
 
 
@@ -60,7 +63,9 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        \Auth::user()->articles()->create($request->all());
+        $article = \Auth::user()->articles()->create($request->all());
+
+        $article->tags()->attach($request->input('tag_list'));
 
         // Option 1: overlay flash messages
         flash()->overlay('Your article has been successfully created!', 'Good job');
@@ -80,8 +85,11 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit', compact('article'));
+        $tags = Tag::lists('name', 'id');
+
+        return view('articles.edit', compact('article', 'tags'));
     }
+
 
     /**
      * Update an article
