@@ -148,6 +148,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //flash messages for laravel-5-fundamentals tutorial
+        Laracasts\Flash\FlashServiceProvider::class,
+
     ],
 
     /*
@@ -200,6 +203,9 @@ return [
         //forms for laravel-5-fundamentals tutorial
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
+
+        //flash messages for laravel-5-fundamentals tutorial
+        'Flash'      => Laracasts\Flash\Flash::class,
 
     ],
 
