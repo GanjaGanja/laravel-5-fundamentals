@@ -148,6 +148,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //Navigation improvement
+        App\Providers\ViewComposerServiceProvider::class,
+
         //flash messages for laravel-5-fundamentals tutorial
         Laracasts\Flash\FlashServiceProvider::class,
 

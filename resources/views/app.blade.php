@@ -10,8 +10,14 @@
 	<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
+	{{-- Bootstrap starter template --}}
+	@include('partials.nav')
+
 	<div class="container">
+		{{-- Option 1: handmade partial for flash messages --}}
 		{{-- @include('partials.flash') --}}
+
+		{{-- Option 2: Laracasts facade for flash messages --}}
 		@include('flash::message')
 
 		@yield('content')
