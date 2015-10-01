@@ -1,5 +1,7 @@
 <?php
 
+Route::get('foo', 'FooController@foo');
+
 Route::get('about', 'PagesController@about');
 Route::get('about2', 'PagesController@about2');
 Route::get('about3', 'PagesController@about3');
