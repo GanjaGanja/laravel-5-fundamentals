@@ -12,7 +12,9 @@
 		<h5>Tags:</h5>
 		<ul>
 			@foreach ($article->tags as $tag)
-				<li>{{ $tag->name }}</li>
+				<li>
+					<a href="{{ action('TagsController@show', [$tag->name]) }}">{{ $tag->name }}</a>
+				</li>
 			@endforeach
 		</ul>
 	@endunless
